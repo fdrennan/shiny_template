@@ -1,9 +1,9 @@
 ## app.R ##
-library(semantic.dashboard)
+library(shinydashboard)
 library(ggplot2)
-library(dashboardthemes)
 
-ui <- dashboardPage(theme = "flatly",
+ui <- dashboardPage(
+  theme = "flatly",
   header = dashboardHeader(title = "Basic dashboard"),
   sidebar = dashboardSidebar(
     size = 'wide',
@@ -13,9 +13,9 @@ ui <- dashboardPage(theme = "flatly",
   ),
   body = dashboardBody(
     ### changing theme
-    shinyDashboardThemes(
-      theme = "blue_gradient"
-    ),
+    # shinyDashboardThemes(
+    #   theme = "blue_gradient"
+    # ),
     # Boxes need to be put in a row (or column)
     fluidRow(
       column(
@@ -29,20 +29,22 @@ ui <- dashboardPage(theme = "flatly",
       ),
       column(
         width = 4, plotOutput("plot4", height = 250)
-      ),
-      column(
-        width = 4, plotOutput("plot5", height = 250)
       )
     ),
     fluidRow(
       column(
-        width = 4, plotOutput("plot6", height = 250)
+        width = 8, plotOutput("plot5", height = 250)
+      ),
+      column(
+        width = 8, plotOutput("plot6", height = 250)
+    ),
+      column(
+        width = 16, plotOutput("plot7", height = 250)
       )
-    )
   ),
   title = "Dashboard example"
 )
-
+)
 server <- function(input, output) {
   set.seed(122)
   histdata <- rnorm(500)
@@ -75,6 +77,10 @@ server <- function(input, output) {
     hist(data)
   })
   output$plot6 <- renderPlot({
+    data <- histdata[seq_len(input$slider)]
+    hist(data)
+  })
+  output$plot7 <- renderPlot({
     data <- histdata[seq_len(input$slider)]
     hist(data)
   })
