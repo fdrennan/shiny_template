@@ -1,23 +1,23 @@
 ## app.R ##
 library(semantic.dashboard)
 library(ggplot2)
+library(dashboardthemes)
 
 ui <- dashboardPage(theme = "flatly",
   header = dashboardHeader(title = "Basic dashboard"),
   sidebar = dashboardSidebar(
+    size = 'wide',
     menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-    menuItem("Widgets", icon = icon("th"), tabName = "widgets")
+    menuItem("Widgets", icon = icon("th"), tabName = "widgets"),
+    sliderInput("slider", "Number of observations:", 1, 100, 50)
   ),
   body = dashboardBody(
     ### changing theme
     shinyDashboardThemes(
       theme = "blue_gradient"
     ),
-    fluidRow(
-      sliderInput("slider", "Number of observations:", 1, 100, 50)
-    ),
     # Boxes need to be put in a row (or column)
-    # fluidRow(
+    fluidRow(
       column(
           width = 4, plotOutput("plot1", height = 250)
       ),
@@ -32,12 +32,12 @@ ui <- dashboardPage(theme = "flatly",
       ),
       column(
         width = 4, plotOutput("plot5", height = 250)
-      # )
+      )
     ),
-    # fluidRow(
+    fluidRow(
       column(
         width = 4, plotOutput("plot6", height = 250)
-      # )
+      )
     )
   ),
   title = "Dashboard example"
