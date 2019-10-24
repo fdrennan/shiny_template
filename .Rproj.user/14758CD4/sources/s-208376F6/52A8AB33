@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571926763636.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "52A8AB33",
+    "lastKnownWriteTime" : 1571932865,
+    "last_content_update" : 1571932865759,
+    "path" : "~/r_projects/shinyr/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "1,27",
+        "scrollLine" : "1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
